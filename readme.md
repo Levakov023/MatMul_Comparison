@@ -43,7 +43,6 @@ Single-threaded triple nested loop, same matrix dimensions (718×1024 × 1024×5
 ![CPU output](img/RawMatMulCPU.png)
 
 ---
+### TODO: Tiled matrix multiplication
 
-### Next: tiled matmul
-
-Naive kernel hammers global memory on every multiply. The tiled version loads blocks of A and B into shared memory (~100x faster than global), reducing global memory reads by a factor of `TILE_SIZE`.
+The naive kernel reads directly from global memory on every multiply. Tiling loads blocks of A and B into shared memory (~100x faster than global), which should reduce global memory reads by a factor of `TILE_SIZE` and significantly improve kernel time.
